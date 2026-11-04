@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hugo Hospitality — Variant B (Jobs-First)</title>
+<meta name="description" content="Hospitality staffing, done properly. 10 live vacancies. Permanent and temporary chefs, managers and front-of-house staff across the UK.">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#DB0813; --red-dark:#B40610; --navy:#1F3263; --navy-deep:#141F3F;
+  --ink:#111; --ink-soft:#1E293B; --ink-muted:#475569;
+  --surface:#fff; --surface-alt:#F0F5FA; --surface-warm:#FAFBFC; --line:#D7D7D7;
+  --font-head:'Outfit',Helvetica,Arial,sans-serif;
+  --font-body:'Urbanist',Helvetica,Arial,sans-serif;
+  --radius:10px; --shadow:0 2px 12px rgba(0,0,0,.06); --shadow-lift:0 14px 34px rgba(17,17,17,.14);
+  --container:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--font-head);line-height:1.15;font-weight:600;color:var(--ink-soft)}
+.eyebrow{font-family:var(--font-head);font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-head);font-weight:600;font-size:1rem;padding:15px 30px;border-radius:var(--radius);border:2px solid transparent;cursor:pointer;transition:all .22s;min-height:48px}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(219,8,19,.3)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-deep);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.brand img{height:52px;width:auto}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{font-family:var(--font-head);font-weight:500;font-size:.95rem;color:var(--ink-soft);padding:6px 2px;border-bottom:2px solid transparent;transition:.2s}
+.nav a:hover{color:var(--red);border-bottom-color:var(--red)}
+.nav .btn{padding:11px 22px;font-size:.9rem}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0}
+
+/* HERO: split with search panel */
+.hero{position:relative;color:#fff;isolation:isolate;padding:88px 0 96px}
+.hero::before{content:"";position:absolute;inset:0;background:url("../assets/img/hero-chef-1920.webp") center 25%/cover no-repeat;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(95deg,rgba(9,13,25,.92) 8%,rgba(9,13,25,.72) 55%,rgba(9,13,25,.42));z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero .eyebrow{color:#FF8E94}
+.hero h1{color:#fff;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:700;margin:14px 0 16px;text-wrap:balance}
+.hero p{color:rgba(255,255,255,.85);font-size:1.08rem;max-width:480px;margin-bottom:30px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-ctas .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.hero-ctas .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+/* search panel */
+.search-panel{background:#fff;border-radius:16px;padding:32px;color:var(--ink);box-shadow:var(--shadow-lift)}
+.search-panel .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(219,8,19,.08);color:var(--red);font-family:var(--font-head);font-weight:600;font-size:.85rem;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.search-panel .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.search-panel h2{font-size:1.35rem;margin-bottom:20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-family:var(--font-head);font-size:.82rem;font-weight:600;color:var(--ink-muted);margin-bottom:6px;letter-spacing:.02em}
+.field input,.field select{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:var(--radius);font-family:var(--font-body);font-size:1rem;color:var(--ink);background:var(--surface-warm);transition:border-color .2s}
+.field input:focus,.field select:focus{border-color:var(--navy);outline:none}
+.search-panel .btn{width:100%;margin-top:6px}
+.search-panel .hint{margin-top:14px;font-size:.86rem;color:var(--ink-muted);text-align:center}
+.search-panel .hint a{color:var(--navy);font-weight:600;text-decoration:underline}
+
+/* PROOF BAR */
+.proof{background:var(--navy);color:#fff}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr);padding:30px 0}
+.proof div{border-left:1px solid rgba(255,255,255,.18);padding:4px 28px}
+.proof div:first-child{border-left:0;padding-left:0}
+.proof strong{display:block;font-family:var(--font-head);font-size:1.75rem;font-weight:700}
+.proof span{font-size:.88rem;color:rgba(255,255,255,.75)}
+
+/* DUAL PATH */
+.paths{padding:96px 0}
+.paths .section-head{text-align:center;max-width:620px;margin:0 auto 56px}
+.paths .section-head h2{font-size:clamp(1.7rem,2.8vw,2.3rem);margin:12px 0 12px}
+.paths .section-head p{color:var(--ink-muted)}
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.path-card{border:1px solid var(--line);border-radius:16px;padding:44px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.path-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.path-card.employers{background:linear-gradient(160deg,#fff 55%,rgba(219,8,19,.05))}
+.path-card.candidates{background:linear-gradient(160deg,#fff 55%,rgba(31,50,99,.06))}
+.path-card .num{font-family:var(--font-head);font-weight:700;font-size:.85rem;color:#fff;background:var(--red);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.path-card.candidates .num{background:var(--navy)}
+.path-card h3{font-size:1.5rem;margin-bottom:12px}
+.path-card p{color:var(--ink-muted);margin-bottom:22px}
+.path-card ul{list-style:none;margin-bottom:28px}
+.path-card li{padding:8px 0 8px 28px;position:relative;color:var(--ink-soft);font-size:.98rem}
+.path-card li::before{content:"✓";position:absolute;left:0;color:var(--red);font-weight:700}
+.path-card.candidates li::before{color:var(--navy)}
+
+/* SECTORS — compact tiles */
+.sectors{background:var(--surface-alt);padding:88px 0}
+.sectors .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.sectors h2{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:10px}
+.sector-row{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.sector-tile{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center;transition:transform .22s,border-color .22s}
+.sector-tile:hover{transform:translateY(-5px);border-color:var(--red)}
+.sector-tile img{width:44px;height:44px;object-fit:contain;margin:0 auto 12px}
+.sector-tile h3{font-size:.92rem;font-weight:600}
+
+/* PROCESS */
+.process{padding:96px 0}
+.process .section-head{text-align:center;max-width:600px;margin:0 auto 52px}
+.process .section-head h2{font-size:clamp(1.7rem,2.8vw,2.3rem);margin:12px 0 10px}
+.process .section-head p{color:var(--ink-muted)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.steps::before{content:"";position:absolute;top:26px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--red),var(--navy))}
+.step{text-align:center;padding:0 28px;position:relative}
+.step .n{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--red);color:var(--red);font-family:var(--font-head);font-weight:700;font-size:1.15rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;z-index:1}
+.step:nth-child(2) .n{border-color:#8A2540;color:#8A2540}
+.step:nth-child(3) .n{border-color:var(--navy);color:var(--navy)}
+.step h3{font-size:1.2rem;margin-bottom:10px}
+.step p{color:var(--ink-muted);font-size:.95rem}
+
+/* JOBS — light board */
+.jobs{background:var(--surface-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:88px 0}
+.jobs-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:32px;gap:20px;flex-wrap:wrap}
+.jobs-head h2{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:10px}
+.jobs-head .count{font-family:var(--font-head);color:var(--ink-muted);font-weight:500}
+.job-list{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.job-row{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 26px;display:flex;align-items:center;gap:20px;transition:border-color .2s,transform .2s}
+.job-row:hover{border-color:var(--red);transform:translateX(4px)}
+.job-row .info{flex:1;min-width:0}
+.job-row h3{font-size:1.08rem;margin-bottom:4px}
+.job-row .meta{font-size:.88rem;color:var(--ink-muted)}
+.job-row .meta b{color:var(--navy);font-weight:600}
+.job-row .tag{flex:none;font-family:var(--font-head);font-size:.78rem;font-weight:600;color:var(--red);background:rgba(219,8,19,.07);border:1px solid rgba(219,8,19,.22);padding:5px 12px;border-radius:999px;white-space:nowrap}
+.jobs-cta{text-align:center;margin-top:36px}
+
+/* TESTIMONIAL + LOGOS */
+.social{padding:96px 0}
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.social blockquote{border-left:3px solid var(--red);padding-left:28px}
+.social blockquote p{font-family:var(--font-head);font-size:1.3rem;line-height:1.55;color:var(--ink-soft);margin-bottom:24px;text-wrap:pretty}
+.social cite{font-style:normal}
+.social cite strong{font-family:var(--font-head);display:block;font-size:1.05rem}
+.social cite span{color:var(--ink-muted);font-size:.9rem}
+.logo-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.logo-wall figure{background:var(--surface-alt);border-radius:12px;height:110px;display:flex;align-items:center;justify-content:center;padding:18px}
+.logo-wall img{max-height:72px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.25s}
+.logo-wall figure:hover img{filter:none;opacity:1}
+.logo-wall figcaption{display:none}
+
+/* CTA */
+.cta{background:var(--navy-deep);color:#fff}
+.cta-inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;padding:76px 0}
+.cta h2{color:#fff;font-size:clamp(1.7rem,2.7vw,2.3rem);margin-bottom:12px;text-wrap:balance}
+.cta p{color:rgba(255,255,255,.78);max-width:520px}
+.cta-actions{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.cta-phone{font-family:var(--font-head);font-weight:700;font-size:1.45rem}
+
+/* FOOTER */
+.footer{background:#0B1226;color:rgba(255,255,255,.78);padding:72px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:56px}
+.footer img{height:64px;margin-bottom:20px}
+.footer h4{color:#fff;font-size:1rem;margin-bottom:18px}
+.footer p,.footer li{font-size:.92rem;line-height:1.7}
+.footer ul{list-style:none}
+.footer ul a:hover{color:#fff}
+.footer-contact a{color:#fff;font-weight:500}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.55)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.search-panel .dot{animation:none}}
+
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .proof-inner{grid-template-columns:repeat(2,1fr);gap:22px 0}
+  .proof div:nth-child(3){border-left:0;padding-left:0}
+  .path-grid,.social-grid{grid-template-columns:1fr}
+  .sector-row{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:1fr;gap:40px}
+  .steps::before{display:none}
+  .job-list{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .cta-inner{grid-template-columns:1fr}
+}
+@media (max-width:768px){
+  .nav{position:fixed;inset:76px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:14px 24px 26px;border-bottom:1px solid var(--line);transform:translateY(-8px);opacity:0;visibility:hidden;transition:.25s;box-shadow:0 20px 40px rgba(0,0,0,.1)}
+  .nav.open{transform:none;opacity:1;visibility:visible}
+  .nav a{padding:14px 4px;border-bottom:1px solid var(--surface-alt);font-size:1.05rem}
+  .nav .btn{margin-top:16px}
+  .nav-toggle{display:block}
+  .hero{padding:64px 0 72px}
+  .paths,.sectors,.process,.jobs,.social{padding:64px 0}
+  .sector-row{grid-template-columns:repeat(2,1fr)}
+  .job-row{flex-wrap:wrap}
+  .logo-wall{grid-template-columns:repeat(2,1fr)}
+  .proof-inner{grid-template-columns:1fr 1fr}
+  .proof div{padding:2px 18px}
+  .proof div:nth-child(odd){border-left:0;padding-left:0}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="#" aria-label="Hugo Hospitality — home"><img src="../assets/img/logo.webp" alt="Hugo Hospitality Recruitment"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#">Home</a>
+      <a href="#">Employers</a>
+      <a href="#">Jobs</a>
+      <a href="#">About</a>
+      <a class="btn btn-primary" href="#">Submit a Vacancy</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Hospitality staffing, done properly</span>
+        <h1>The right hospitality people. Right now.</h1>
+        <p>Permanent and temporary chefs, managers and front-of-house staff for the UK's leading restaurants, hotels, cafes and caterers — matched in days, not weeks.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#">I'm hiring — submit a vacancy</a>
+          <a class="btn btn-ghost" href="#jobs">I'm looking for work</a>
+        </div>
+      </div>
+      <div class="search-panel" aria-label="Job search">
+        <span class="chip"><span class="dot"></span>10 live vacancies today</span>
+        <h2>Find your next role</h2>
+        <div class="field"><label for="jq">Keyword</label><input id="jq" type="search" placeholder="e.g. sous chef, manager"></div>
+        <div class="field"><label for="jl">Location</label><select id="jl"><option>All locations</option><option>London</option><option>Mayfair</option><option>Soho</option><option>Windsor</option><option>Guildford</option><option>Leeds</option></select></div>
+        <div class="field"><label for="jc">Category</label><select id="jc"><option>All categories</option><option>Chef</option><option>Manager</option><option>Hospitality</option><option>Retail</option></select></div>
+        <button class="btn btn-navy" type="button">Search jobs</button>
+        <p class="hint">No account needed — <a href="#">apply directly</a> with your CV.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Hugo in numbers">
+    <div class="container proof-inner">
+      <div><strong>35+</strong><span>years of hospitality experience</span></div>
+      <div><strong>6</strong><span>specialist sectors covered</span></div>
+      <div><strong>1 wk</strong><span>typical time to placement</span></div>
+      <div><strong>UK</strong><span>nationwide coverage</span></div>
+    </div>
+  </section>
+
+  <section class="paths">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Two paths, one standard</span>
+        <h2>Whether you're hiring or hired</h2>
+        <p>Employers get sector-specialist consultants and vetted candidates. Candidates get roles that match their skills — locally.</p>
+      </div>
+      <div class="path-grid">
+        <article class="path-card employers reveal">
+          <span class="num">1</span>
+          <h3>I'm an employer</h3>
+          <p>Submit a vacancy and a sector specialist starts matching from our vetted database the same day.</p>
+          <ul>
+            <li>Temp cover in days, permanent in weeks</li>
+            <li>Competitive fees with generous rebates</li>
+            <li>Candidates matched to your cuisine and culture</li>
+          </ul>
+          <a class="btn btn-primary" href="#">Submit a vacancy</a>
+        </article>
+        <article class="path-card candidates reveal">
+          <span class="num">2</span>
+          <h3>I'm looking for work</h3>
+          <p>Browse live vacancies or send your CV — we place chefs, managers and FOH staff across the UK.</p>
+          <ul>
+            <li>Direct applications, no account needed</li>
+            <li>Roles from Michelin-starred to high-street</li>
+            <li>Consultants who know your sector</li>
+          </ul>
+          <a class="btn btn-navy" href="#jobs">Browse jobs</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectors">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Sectors</span>
+          <h2>All roles under the hospitality umbrella</h2>
+        </div>
+        <a class="btn btn-outline" href="#">See all sectors</a>
+      </div>
+      <div class="sector-row reveal">
+        <div class="sector-tile"><img src="../assets/img/icon-restaurant.webp" alt=""><h3>Restaurants</h3></div>
+        <div class="sector-tile"><img src="../assets/img/icon-hotel.webp" alt=""><h3>Hotels</h3></div>
+        <div class="sector-tile"><img src="../assets/img/icon-dine.webp" alt=""><h3>Events &amp; Catering</h3></div>
+        <div class="sector-tile"><img src="../assets/img/icon-bakery.webp" alt=""><h3>Bakery &amp; Cafe</h3></div>
+        <div class="sector-tile"><img src="../assets/img/icon-finedine.webp" alt=""><h3>Fine Dining</h3></div>
+        <div class="sector-tile"><img src="../assets/img/icon-health.webp" alt=""><h3>Health &amp; Education</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>From brief to placed in three steps</h2>
+        <p>The same simple process whether it's urgent temp cover or a head-of-department search.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><span class="n">1</span><h3>Tell us the role</h3><p>Submit a vacancy or send your CV. A sector specialist picks it up the same day.</p></div>
+        <div class="step"><span class="n">2</span><h3>We match</h3><p>Vetted candidates matched to your cuisine, culture and shift pattern — or roles matched to your skills.</p></div>
+        <div class="step"><span class="n">3</span><h3>Placed &amp; supported</h3><p>Interviews arranged fast, placements within a week for urgent roles, with ongoing support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="jobs" id="jobs">
+    <div class="container">
+      <div class="jobs-head reveal">
+        <div>
+          <span class="eyebrow">Live vacancies</span>
+          <h2>On the board right now</h2>
+        </div>
+        <span class="count">Showing 6 of 10</span>
+      </div>
+      <div class="job-list">
+        <a class="job-row reveal" href="#"><div class="info"><h3>Senior Sous Chef</h3><p class="meta"><b>Covent Garden, London</b> · £45,000–£50,000 · Full time</p></div><span class="tag">Chef</span></a>
+        <a class="job-row reveal" href="#"><div class="info"><h3>Pastry Junior Sous Chef</h3><p class="meta"><b>London</b> · Full time</p></div><span class="tag">Chef</span></a>
+        <a class="job-row reveal" href="#"><div class="info"><h3>Chef de Partie</h3><p class="meta"><b>Windsor</b> · Full time</p></div><span class="tag">Chef</span></a>
+        <a class="job-row reveal" href="#"><div class="info"><h3>Breakfast Chef — Mayfair</h3><p class="meta"><b>Mayfair, London</b> · Day shifts · Full time</p></div><span class="tag">Chef</span></a>
+        <a class="job-row reveal" href="#"><div class="info"><h3>Head Housekeeper Cook</h3><p class="meta"><b>Leeds</b> · Full time</p></div><span class="tag">Hospitality</span></a>
+        <a class="job-row reveal" href="#"><div class="info"><h3>Luxury Door Greeter</h3><p class="meta"><b>Bond Street, London</b> · Full time</p></div><span class="tag">Retail</span></a>
+      </div>
+      <div class="jobs-cta reveal"><a class="btn btn-outline" href="#">View all 10 vacancies</a></div>
+    </div>
+  </section>
+
+  <section class="social">
+    <div class="container social-grid">
+      <blockquote class="reveal">
+        <p>"Within just a week, we secured both an Assistant General Manager and a Head Chef — positions crucial to our operations. Hugo Hospitality has truly transformed our hiring process."</p>
+        <cite><strong>David Masner</strong><span>General Manager, Hilton Hotels &amp; Resorts</span></cite>
+      </blockquote>
+      <div class="logo-wall reveal">
+        <figure><img src="../assets/img/client-logos/client-1.jpeg" alt="Client"></figure>
+        <figure><img src="../assets/img/client-logos/client-2.jpeg" alt="Client"></figure>
+        <figure><img src="../assets/img/client-logos/client-3.jpeg" alt="Client"></figure>
+        <figure><img src="../assets/img/client-logos/client-4.jpeg" alt="Client"></figure>
+        <figure><img src="../assets/img/client-logos/client-5.jpeg" alt="Client"></figure>
+        <figure><img src="../assets/img/client-logos/client-7.jpeg" alt="Client"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner">
+      <div>
+        <h2>Need someone this week? Start with a conversation.</h2>
+        <p>For a confidential discussion about your hiring needs — or your next role — call us or submit a vacancy today.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="cta-phone" href="tel:02038331944">020 3833 1944</a>
+        <a class="btn btn-primary" href="#">Submit a vacancy</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="../assets/img/logo.webp" alt="Hugo Hospitality Recruitment">
+        <p>Hugo Hospitality Recruitment trading under:<br>Company number 14713827<br>27 Old Gloucester Street, London, WC1N 3AX</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="#">Home</a></li><li><a href="#">Employers</a></li><li><a href="#">Jobs</a></li><li><a href="#">About</a></li><li><a href="#">Submit a Vacancy</a></li></ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul><li><a href="#">Privacy policy</a></li><li><a href="#">Anti-slavery statement</a></li></ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer-contact">
+          <li>Phone: <a href="tel:02038331944">020 3833 1944</a></li>
+          <li>Email: <a href="mailto:info@hugohospitality.co.uk">info@hugohospitality.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Hugo Hospitality Recruitment. All rights reserved.</span><span>Privacy · Anti-slavery</span></div>
+  </div>
+</footer>
+
+<script>
+const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');
+toggle.addEventListener('click',()=>{const o=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',o)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
